@@ -25,7 +25,7 @@ ReactDOM.render(
    <Router history={browserHistory}>
       <Route path='/' component={Welcome}>
          <IndexRoute component={Instructions} />
-         <Route path='instructions' component={Instructions} />
+               <Route path='instructions' component={Instructions} />
          <Route path='play' component={Play} movies={movies}/>
       </Route>
    </Router>
