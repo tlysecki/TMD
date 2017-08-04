@@ -8,17 +8,40 @@ class Play extends Component {
     this.state = {
       id: 0,
       time: 60,
-      wrongs: 0
+      wrongs: 0,
+      result: "",
+      score: 0
     }
     this.guess = this.guess.bind(this)
+    this.startTimer = this.startTimer.bind(this)
     this.generateMovie = this.generateMovie.bind(this)
   }
 
-  generateMovie () {
+
+
+  generateMovie() {
     const movies = this.props.route.movies;
-    const num = Math.floor(Math.random()*movies.length);
+    const num = Math.floor(Math.random() * movies.length);
     this.setState({
       id: num
+    })
+    this.startTimer();
+  }
+
+  startTimer(){
+    setTimeout(() => {
+      if (this.state.time > 0) {
+        this.setState({
+          time: this.state.time - 1
+        })
+      }
+    }, 1000);
+  }
+
+  newGame() {
+    this.setState({
+      time: 60,
+      wrongs: 0
     })
   }
 
@@ -29,18 +52,23 @@ class Play extends Component {
     e.preventDefault();
     if (userGuess === correctTitle) {
       console.log('yay');
+      this.setState({
+        score: this.state.score + 1
+      })
       this.generateMovie();
     } else {
       console.log('try again');
       this.setState({
-        wrongs: this.state.wrongs +1
+        wrongs: this.state.wrongs + 1
       })
-      if (this.state.wrongs ===3) {
+      if (this.state.wrongs === 2) {
         console.log('game over')
+        this.setState({
+          result: 'You lose!'
+        })
       }
       console.log(this.state.wrongs)
     }
-    // console.log(userGuess)
   }
 
   render() {
@@ -54,14 +82,30 @@ class Play extends Component {
         </p>
         <button onClick={this.generateMovie}>Start</button>
         <h3>{movies[this.state.id].description}</h3>
-        <form onSubmit={(e)=>{this.guess(e); this.refs.userGuess.value = ''}}>
+        <form onSubmit={(e) => { this.guess(e); this.refs.userGuess.value = '' }}>
           <input ref='userGuess' type='text' placeholder='enter a movie'></input>
-          <button type='submit' disabled={this.state.wrongs > 3 ? true : false}>Guess</button>
+          <button type='submit' disabled={this.state.wrongs > 2 ? true : false}>Guess</button>
         </form>
+        <div>
+          <p>Score: {this.state.score}</p>
+          <Timer time={this.state.time} />
+        </div>
+        <button onClick={this.newGame}>Start a new game</button>
+        <p style={{ display: this.state.result == '' ? 'none' : 'block' }}>{this.state.result} The correct answer was: {movies[this.state.id].title}</p>
         <Link to='/instructions'>How do you play?</Link>
       </div>
     );
   }
 }
+
+class Timer extends Component {
+
+  render() {
+    return (
+      <p>{this.props.time} seconds</p>
+    )
+  }
+}
+
 
 export default Play;
