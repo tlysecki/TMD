@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import './Instructions.css';
 
 class Play extends Component {
@@ -56,7 +56,7 @@ class Play extends Component {
         <h3>{movies[this.state.id].description}</h3>
         <form onSubmit={(e)=>{this.guess(e); this.refs.userGuess.value = ''}}>
           <input ref='userGuess' type='text' placeholder='enter a movie'></input>
-          <button type='submit' disabled={this.state.wrongs > 2 ? true : false}>Guess</button>
+          <button type='submit' disabled={this.state.wrongs > 3 ? true : false}>Guess</button>
         </form>
         <Link to='/instructions'>How do you play?</Link>
       </div>
