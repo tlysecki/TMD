@@ -31,7 +31,7 @@ const movies = [
    new Movie('Nightmare on Elm Street','A wise-cracking boiler technician teaches high school students to believe in their dreams.'),
    new Movie('Mrs. Doubtfire','A divorced man discovers he is trans and loses custody of his kids.'),
    new Movie('Spiderman','A young man forcibly binds others and photographs them for money.'),
-   new Movie('Elf','Immigrant adoptee is reptriated to his country of birth and experiences culture shock and prejudice.'),
+   new Movie('Elf','Immigrant adoptee is repatriated to his country of birth and experiences culture shock and prejudice.'),
    new Movie('Aladdin','A beautiful princess gets catfished.'),
    new Movie('Cool Runnings','People who are great at one sport are pretty okay at another sport.'),
    new Movie('American Psycho','A metrosexual yuppie gets upset that his heinous crimes don\'t get any recognition.'),

@@ -13,6 +13,7 @@ class Play extends Component {
       score: 0
     }
     this.guess = this.guess.bind(this)
+    this.newGame = this.newGame.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.generateMovie = this.generateMovie.bind(this)
   }
