@@ -126,15 +126,17 @@ class Play extends Component {
           <button type='submit' disabled={this.state.playing ? false : true}>Guess</button>
         </form>
         <div>
-          <p>Score: {this.state.score}</p>
           <Timer playing={this.state.playing} time={this.state.time} />
+          <p>Score: {this.state.score}</p>
+          <p className="timer" style={{ visibility: !this.state.result ? 'hidden' : 'visible' }}>{this.state.result} The correct answer was: <br/><br/><span className="correctTitle">{movies[this.state.id].title}</span></p>
           <span className="wrong" style={{ visibility: this.state.wrongs > 0 ? 'visible' : 'hidden' }}>X</span>
           <span className="wrong" style={{ visibility: this.state.wrongs > 1 ? 'visible' : 'hidden' }}>X</span>
           <span className="wrong" style={{ visibility: this.state.wrongs > 2 ? 'visible' : 'hidden' }}>X</span>
 
         </div>
-        <p style={{ display: !this.state.result ? 'none' : 'block' }}>{this.state.result} The correct answer was: {movies[this.state.id].title}</p>
-        <Link className="links" to='/instructions'>How do you play?</Link>
+        <div className="howTo">
+          <Link className="links" to='/instructions'>How do you play?</Link>
+        </div>
       </div>
     );
   }
@@ -144,7 +146,7 @@ class Timer extends Component {
 
   render() {
     return (
-      <p className={this.props.time > 5 ? "" : "runningOut"} style={{ visibility: this.props.playing ? 'visible' : 'hidden' }}>{this.props.time} seconds</p>
+      <p className={this.props.time > 5 ? "timer" : "runningOut"} style={{ visibility: this.props.playing ? 'visible' : 'hidden' }}>{this.props.time} {this.props.time === 1 ? "second" : "seconds"}</p>
     )
   }
 }

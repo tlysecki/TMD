@@ -1,15 +1,15 @@
 body{
 font-family: 'Ubuntu', sans-serif;
-background: #C3DFE0;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #FFF, #C3DFE0);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #FFF, #C3DFE0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #75DBCD;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #FFF, #75DBCD);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #FFF, #75DBCD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 height: 100vh;
 }
 
 .links {
   text-decoration: none;
   font-size: 1.5em;
-  color: #F4AC45
+  color: #dd2928
 }
 
 .App {
@@ -37,6 +37,11 @@ height: 100vh;
   color: #3F7CAC
 }
 
+.correctTitle {
+  font-size: 1.6em;
+  font-style: italic;
+}
+
 .descriptionBox {
   height: 10vh;
   width: 80vw;
@@ -50,8 +55,24 @@ height: 100vh;
   text-shadow: #668 0px 0 20px
 }
 
+.timer {
+  font-size: 1.4em;
+}
+
 .runningOut {
+  font-size: 1.4em;
   color: #FE4A49;
+  animation-name: warning;
+  animation-duration: 6s;
+}
+
+@keyframes warning {
+  from {text-shadow: none}
+  to {text-shadow: 0 0 15px purple}
+}
+
+.howTo {
+  
 }
 
 input {
