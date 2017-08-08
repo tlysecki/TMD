@@ -16,6 +16,7 @@ class Play extends Component {
     this.newGame = this.newGame.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.generateMovie = this.generateMovie.bind(this)
+    this.restart = this.restart.bind(this)
   }
 
 
