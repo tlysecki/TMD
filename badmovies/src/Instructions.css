@@ -25,7 +25,9 @@ height: 100vh;
   font-weight: 700;
   font-size: 8em;
   color: #FE4A49;
+  margin: 0vh 1vw 2vh 1vw;
   padding: 0vh 2vw;
+  border: 4px solid #FE4A49; 
 }
 
 .App-intro {
@@ -45,14 +47,15 @@ height: 100vh;
 .descriptionBox {
   height: 10vh;
   width: 80vw;
-  margin: 0 auto; 
+  margin: 3vh auto; 
   text-align: center;
   padding: auto 3vw;
 }
 
 .description {
   padding: auto 3vw;
-  text-shadow: #668 0px 0 20px
+  margin-top: 3vh;
+  text-shadow: #99b 2px 2px 7px
 }
 
 .timer {
@@ -72,7 +75,7 @@ height: 100vh;
 }
 
 .howTo {
-
+  padding-top: 2vh;
 }
 
 input {
