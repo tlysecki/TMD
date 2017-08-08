@@ -10,16 +10,29 @@ class Play extends Component {
       time: 60,
       wrongs: 0,
       result: "",
-      score: 0
+      score: 0,
+      playing: false
     }
     this.guess = this.guess.bind(this)
     this.newGame = this.newGame.bind(this)
     this.startTimer = this.startTimer.bind(this)
     this.generateMovie = this.generateMovie.bind(this)
-    this.restart = this.restart.bind(this)
+    this.startGame = this.startGame.bind(this)
+    this.playing = this.playing.bind(this)
+    this.gameStop = this.gameStop.bind(this)
   }
 
+  startGame() {
+    this.generateMovie();
+    this.startTimer();
+    this.playing();
+  }
 
+  playing() {
+    this.setState({
+      playing: true
+    })
+  }
 
   generateMovie() {
     const movies = this.props.route.movies;
@@ -27,11 +40,17 @@ class Play extends Component {
     this.setState({
       id: num
     })
-    this.startTimer();
   }
 
-  startTimer(){
-    setTimeout(() => {
+  startTimer() {
+    this.counterInterval = setInterval(() => {
+      if (this.state.time === 0) {
+        this.gameStop();
+        this.setState({
+          result: "Time's up!"
+        })
+        return;
+      }
       if (this.state.time > 0) {
         this.setState({
           time: this.state.time - 1
@@ -40,11 +59,21 @@ class Play extends Component {
     }, 1000);
   }
 
+  gameStop() {
+    clearInterval(this.counterInterval);
+    this.setState({
+      playing: false,
+    })
+  }
+
   newGame() {
     this.setState({
       time: 60,
-      wrongs: 0
+      wrongs: 0,
+      playing: true,
+      result: ''
     })
+    this.startGame();
   }
 
   guess(e) {
@@ -64,7 +93,7 @@ class Play extends Component {
         wrongs: this.state.wrongs + 1
       })
       if (this.state.wrongs === 2) {
-        console.log('game over')
+        this.gameStop();
         this.setState({
           result: 'You lose!'
         })
@@ -82,14 +111,15 @@ class Play extends Component {
         <p className="App-intro">
           This is where you play
         </p>
-        <button onClick={this.generateMovie}>Start</button>
-        <h3>{movies[this.state.id].description}</h3>
+        <button onClick={this.startGame} disabled={this.state.playing ? true : false}>Start</button>
+        <h3 style={{ visibility: this.state.playing ? 'visible' : 'hidden' }}>{movies[this.state.id].description}</h3>
         <form onSubmit={(e) => { this.guess(e); this.refs.userGuess.value = '' }}>
           <input ref='userGuess' type='text' placeholder='enter a movie'></input>
-          <button type='submit' disabled={this.state.wrongs > 2 ? true : false}>Guess</button>
+          <button type='submit' disabled={this.state.playing ? false : true}>Guess</button>
         </form>
         <div>
           <p>Score: {this.state.score}</p>
+          <p>Wrong Answers: {this.state.wrongs}</p>
           <Timer time={this.state.time} />
         </div>
         <button onClick={this.newGame}>Start a new game</button>
