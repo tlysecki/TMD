@@ -7,7 +7,7 @@ class Welcome extends Component {
     return (
 
       <div className="App">
-          <h2>Terrible Movie Descriptions</h2>
+          <h2 className="title">Terrible Movie Descriptions</h2>
           {this.props.children}
       </div>
     );
