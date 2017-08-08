@@ -7,10 +7,9 @@ import Instructions from './Instructions';
 import Play from './Play';
 import registerServiceWorker from './registerServiceWorker';
 
-function Movie(title, description, id) {
+function Movie(title, description) {
    this.title = title;
    this.description = description;
-   this.id = id
 }
 
 const movies = [
@@ -35,7 +34,16 @@ const movies = [
    new Movie('Aladdin', 'A beautiful princess gets catfished.'),
    new Movie('Cool Runnings', 'People who are great at one sport are pretty okay at another sport.'),
    new Movie('American Psycho', 'A metrosexual yuppie gets upset that his heinous crimes don\'t get any recognition.'),
-   new Movie('Apollo 13', 'A group of guys goes on a long trip but their vehicle breas down and they have to turn back.'),
+   new Movie('Apollo 13', 'A group of guys goes on a long trip but their vehicle breaks down and they have to turn back.'),
+   new Movie('Fight Club', 'A guy is two guys.'),
+   new Movie('The Wizard of Oz', 'Drifters with low self-esteem get lost and meet a televangelist who turns out to be a fraud.'),
+   new Movie('Avatar', 'Pocahontas with blue people on another planet.'),
+   new Movie('The Lion King', 'An uncle kills a child\'s father. so a pig and a big rat help him get revenge.'),
+   new Movie('The Chronicles of Narnia', 'A kid comes out of the closet.'),
+   new Movie('Back to the Future', 'A teen boy is lured by a creepy old man into a game of crime, terrorism, and incest.'),
+   new Movie('Skyfall', 'An alcoholic orphan and his boss burn down his childhood home.'),
+   new Movie('School of Rock', 'Overweight loser exploits musically gifted kids for personal gain.'),
+   new Movie('', ''),
    new Movie('', ''),
 ]
 

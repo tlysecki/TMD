@@ -72,7 +72,7 @@ height: 100vh;
 }
 
 .howTo {
-  
+
 }
 
 input {
@@ -138,4 +138,9 @@ button:disabled {
   border: none;
   text-shadow: none;
   box-shadow: none;
+}
+
+.addMovie {
+  text-align: left;
+  padding-left: 20vw;
 }
