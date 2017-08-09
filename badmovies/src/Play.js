@@ -68,6 +68,7 @@ class Play extends Component {
   }
 
   newGame() {
+    clearInterval(this.counterInterval);
     this.setState({
       time: 60,
       wrongs: 0,
