@@ -43,8 +43,6 @@ const movies = [
    new Movie('Back to the Future', 'A teen boy is lured by a creepy old man into a game of crime, terrorism, and incest.'),
    new Movie('Skyfall', 'An alcoholic orphan and his boss burn down his childhood home.'),
    new Movie('School of Rock', 'Overweight loser exploits musically gifted kids for personal gain.'),
-   {/*new Movie('', ''),
-   new Movie('', ''), */}
 ]
 
 ReactDOM.render(
